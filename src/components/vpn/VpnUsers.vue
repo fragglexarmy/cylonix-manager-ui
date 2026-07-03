@@ -113,13 +113,17 @@ const {
     if (!uID) {
       throw new Error('Missing user ID.')
     }
+    // v0.28 ListUsers: id is the numeric headscale user ID; the manager
+    // user UUID lives in the headscale user name.
     const ret = await vpnAPI.headscaleServiceListUsers(
-      isAdmin.value || isNetworkAdmin ? undefined : uID,
-      [],
+      undefined /* id */,
+      isAdmin.value || isNetworkAdmin.value ? undefined : uID /* name */,
+      undefined /* email */,
+      undefined /* idList */,
       isSysAdmin.value ? undefined : namespace.value,
-      isAdmin.value ? undefined : isNetworkAdmin ? network : undefined,
-      undefined,
-      undefined,
+      isAdmin.value ? undefined : isNetworkAdmin.value ? network : undefined,
+      undefined /* filterBy */,
+      undefined /* filterValue */,
       sortBy,
       sortDesc,
       options.page,

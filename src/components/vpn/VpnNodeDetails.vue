@@ -559,6 +559,18 @@ function getIconForNode(node: V1Node) {
                   nodeItem.nodeKey
                 }}</v-col>
               </v-row>
+              <v-row class="field-row" v-if="nodeItem.hostinfo?.backendLogID">
+                <v-col cols="4" class="field-title">Log ID</v-col>
+                <v-col cols="8" class="field-value font-monospace">{{
+                  nodeItem.hostinfo.backendLogID
+                }}</v-col>
+              </v-row>
+              <v-row class="field-row" v-if="nodeItem.hostinfo?.frontendLogID">
+                <v-col cols="4" class="field-title">Frontend log ID</v-col>
+                <v-col cols="8" class="field-value font-monospace">{{
+                  nodeItem.hostinfo.frontendLogID
+                }}</v-col>
+              </v-row>
               <v-row class="field-row">
                 <v-col cols="4" class="field-title">Created</v-col>
                 <v-col cols="8" class="field-value">{{
